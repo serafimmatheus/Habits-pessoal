@@ -5,6 +5,7 @@ import { HeaderDashboar } from "../../Components/HeaderDashBoard/index";
 import { ModalGroupsGoalsCreate } from "../../Components/ModalGroupsGoalsCreate";
 import { PageGroupsGoalsContext } from "../../Context/PageGroupsGoalsContext";
 import { MainGroupsGoals } from "./style";
+import { useParams } from "react-router-dom";
 
 export const PageGroupsGoals = () => {
   const {
@@ -17,8 +18,10 @@ export const PageGroupsGoals = () => {
     handleNextPage,
   } = useContext(PageGroupsGoalsContext);
 
+  const paramsGroupsGoals = useParams();
+
   useEffect(() => {
-    handleGetGroupsGoals();
+    handleGetGroupsGoals(paramsGroupsGoals.group_id);
   }, [nextPage]);
 
   return (
@@ -46,20 +49,6 @@ export const PageGroupsGoals = () => {
             ))}
           </ul>
         </section>
-
-        <div>
-          <Button
-            sx={{ marginRight: "20px" }}
-            variant="contained"
-            onClick={() => handleBeforePage()}
-          >
-            <FiChevronLeft />
-          </Button>
-
-          <Button variant="contained" onClick={() => handleNextPage()}>
-            <FiChevronRight />
-          </Button>
-        </div>
       </MainGroupsGoals>
     </>
   );

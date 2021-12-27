@@ -24,6 +24,7 @@ export const MainGroupsActives = styled.main`
           margin: 10px;
           padding: 10px;
           color: #212121;
+          word-break: break-all;
 
           :hover {
             -webkit-box-shadow: 0px 7px 17px 0px rgba(0, 0, 0, 0.75);

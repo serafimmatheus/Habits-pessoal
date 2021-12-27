@@ -15,7 +15,7 @@ export const ModalGroupsCreate = ({
   handleGroups,
 }) => {
   const [token] = useState(
-    JSON.parse(localStorage.getItem("@Habits-Pessoal:Token")) || ""
+    JSON.parse(localStorage.getItem("@Habits-Pessoal:Token"))
   );
 
   const schema = yup.object().shape({});

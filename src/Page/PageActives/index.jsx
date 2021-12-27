@@ -5,6 +5,7 @@ import { HeaderDashboar } from "../../Components/HeaderDashBoard/index";
 import { ModalGroupsActivesCreate } from "../../Components/ModalGroupsActivesCreate";
 import { PageGroupsActivesContext } from "../../Context/PageGroupsActivesContext";
 import { MainGroupsActives } from "./style";
+import { useParams } from "react-router-dom";
 
 export const PageGroupsActives = () => {
   const {
@@ -15,11 +16,15 @@ export const PageGroupsActives = () => {
     teste,
     handleBeforePage,
     handleNextPage,
+    setParamsTeste,
+    paramsTeste,
   } = useContext(PageGroupsActivesContext);
 
-  useEffect(() => {
-    handleGetGroupsActives();
-  }, [nextPage]);
+  const params = useParams();
+
+  console.log(params.group_id);
+
+  setParamsTeste(params.group_id);
 
   return (
     <>
@@ -38,28 +43,16 @@ export const PageGroupsActives = () => {
           </div>
 
           <ul>
-            {teste.map((elem) => (
-              <li>
-                <h2>nome:{elem.title}</h2>
-                <p>{elem.realization_time}</p>
-              </li>
-            ))}
+            {teste.length > 0
+              ? teste.map((elem) => (
+                  <li>
+                    <h2>nome:{elem.title}</h2>
+                    <p>{elem.realization_time}</p>
+                  </li>
+                ))
+              : "Adicione uma atividade"}
           </ul>
         </section>
-
-        <div>
-          <Button
-            sx={{ marginRight: "20px" }}
-            variant="contained"
-            onClick={() => handleBeforePage()}
-          >
-            <FiChevronLeft />
-          </Button>
-
-          <Button variant="contained" onClick={() => handleNextPage()}>
-            <FiChevronRight />
-          </Button>
-        </div>
       </MainGroupsActives>
     </>
   );

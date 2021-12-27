@@ -18,13 +18,13 @@ export const Routes = () => {
       <Route exact path="/dashboard/groups" isPrivate component={PageGroups} />
       <Route
         exact
-        path="/dashboard/groups/goals"
+        path="/dashboard/groups/:group_id/goals"
         isPrivate
         component={PageGroupsGoals}
       />
       <Route
         exact
-        path="/dashboard/groups/actives"
+        path="/dashboard/groups/:group_id/actives"
         isPrivate
         component={PageGroupsActives}
       />

@@ -18,7 +18,7 @@ export const ModalGroupsActivesCreate = ({
   setIsModalGroupsActives,
 }) => {
   const [token] = useState(
-    JSON.parse(localStorage.getItem("@Habits-Pessoal:Token")) || ""
+    JSON.parse(localStorage.getItem("@Habits-Pessoal:Token"))
   );
 
   const { getIdGroupsGoals } = useContext(GetIdGroupsGoalsContext);

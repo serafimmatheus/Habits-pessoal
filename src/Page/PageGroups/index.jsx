@@ -12,7 +12,6 @@ import { PageGroupsContext } from "../../Context/PageGroupsContext";
 export const PageGroups = () => {
   const {
     changeGetIdGroupsGoals,
-    decode,
     isModalGroup,
     setIsModalGroup,
     isModalGroupEdite,
@@ -91,7 +90,6 @@ export const PageGroups = () => {
                     handleUnSubscribeGroups={handleUnSubscribeGroups}
                     handleSubscribeGroups={handleSubscribeGroups}
                     changeGetIdGroupsGoals={changeGetIdGroupsGoals}
-                    decode={decode}
                     isSrcTrue={isSrcTrue}
                   />
                 ))
@@ -113,7 +111,6 @@ export const PageGroups = () => {
                     handleUnSubscribeGroups={handleUnSubscribeGroups}
                     handleSubscribeGroups={handleSubscribeGroups}
                     changeGetIdGroupsGoals={changeGetIdGroupsGoals}
-                    decode={decode}
                     isSrcTrue={isSrcTrue}
                   />
                 ))}

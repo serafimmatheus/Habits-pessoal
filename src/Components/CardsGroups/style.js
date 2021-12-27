@@ -13,6 +13,7 @@ export const CardGroups = styled.li`
       margin: 10px;
       padding: 10px;
       color: #212121;
+      word-break: break-all;
 
       :hover {
         transition: 0.5s;

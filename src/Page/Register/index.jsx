@@ -1,15 +1,16 @@
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
-import TextField from "@mui/material/TextField";
+import art from "../../Assets/Art.png";
 import { Button } from "@mui/material";
-import { MainRegister } from "./style";
+import { MainRegister, BoxImgRegister } from "./style";
 import { api } from "../../Services/api";
 import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { UserContext } from "../../Context/User";
 import { toast } from "react-toastify";
+import { CssTextField } from "../login/style";
 
 export const Register = () => {
   const history = useHistory();
@@ -65,54 +66,72 @@ export const Register = () => {
 
   return (
     <MainRegister>
-      <h2>Registrar-se</h2>
-      <form onSubmit={handleSubmit(handleRegister)}>
-        <TextField
-          sx={{ marginTop: "10px" }}
-          fullWidth
-          label="UserName"
-          id="fullWidth"
-          {...register("username")}
-        />
-        {errors.username?.message}
-        <TextField
-          sx={{ marginTop: "10px" }}
-          fullWidth
-          label="E-mail"
-          id="fullWidth"
-          type="email"
-          {...register("email")}
-        />
-        {errors.email?.message}
+      <div>
+        <BoxImgRegister>
+          <img src={art} alt="Art.png" />
+        </BoxImgRegister>
+        <form onSubmit={handleSubmit(handleRegister)}>
+          <h2>Registrar-se</h2>
+          <CssTextField
+            sx={{ marginTop: "10px" }}
+            fullWidth
+            label="UserName"
+            id="fullWidth"
+            {...register("username")}
+          />
+          {errors.username?.message}
+          <CssTextField
+            sx={{ marginTop: "10px" }}
+            fullWidth
+            label="E-mail"
+            id="fullWidth"
+            type="email"
+            {...register("email")}
+          />
+          {errors.email?.message}
 
-        <TextField
-          sx={{ marginTop: "10px" }}
-          fullWidth
-          label="Senha"
-          id="fullWidth"
-          type="password"
-          {...register("password")}
-        />
-        {errors.password?.message}
+          <CssTextField
+            sx={{ marginTop: "10px" }}
+            fullWidth
+            label="Senha"
+            id="fullWidth"
+            type="password"
+            {...register("password")}
+          />
+          {errors.password?.message}
 
-        <TextField
-          sx={{ marginTop: "10px" }}
-          fullWidth
-          label="Confirmar Senha"
-          id="fullWidth"
-          type="password"
-          {...register("confirm_password")}
-        />
-        {errors.confirm_password?.message}
+          <CssTextField
+            sx={{ marginTop: "10px" }}
+            fullWidth
+            label="Confirmar Senha"
+            id="fullWidth"
+            type="password"
+            {...register("confirm_password")}
+          />
+          {errors.confirm_password?.message}
 
-        <Button type="submit">Registrar</Button>
-        <div className="options-register">
-          Já tem cadastro?
-          <Link className="link" to="/login">
-            <span>Login.</span>
-          </Link>
-        </div>
-      </form>
+          <Button
+            sx={{
+              border: "1px solid white",
+              marginTop: "20px",
+              marginBottom: "20px",
+              color: "white",
+              position: "relative",
+              left: "50%",
+              transform: "translateX(-50%)",
+            }}
+            type="submit"
+          >
+            Registrar
+          </Button>
+          <div className="options-register">
+            Já tem cadastro?
+            <Link className="link" to="/login">
+              <span>Login.</span>
+            </Link>
+          </div>
+        </form>
+      </div>
     </MainRegister>
   );
 };

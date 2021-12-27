@@ -1,4 +1,3 @@
-import jwtDecode from "jwt-decode";
 import { createContext, useContext, useState } from "react";
 import { toast } from "react-toastify";
 import { api } from "../../Services/api";
@@ -8,12 +7,10 @@ export const PageGroupsContext = createContext();
 
 export const PageGroupsProvider = ({ children }) => {
   const [token] = useState(
-    JSON.parse(localStorage.getItem("@Habits-Pessoal:Token")) || ""
+    JSON.parse(localStorage.getItem("@Habits-Pessoal:Token"))
   );
 
   const { changeGetIdGroupsGoals } = useContext(GetIdGroupsGoalsContext);
-
-  const decode = jwtDecode(token);
 
   const [isModalGroup, setIsModalGroup] = useState(false);
 
@@ -43,7 +40,7 @@ export const PageGroupsProvider = ({ children }) => {
   const handleBeforePage = () => {
     if (nextpage > 1) {
       setNextpage(nextpage - 1);
-      //   handleGroups();
+      handleGroups();
     }
   };
 
@@ -138,7 +135,6 @@ export const PageGroupsProvider = ({ children }) => {
     <PageGroupsContext.Provider
       value={{
         changeGetIdGroupsGoals,
-        decode,
         isModalGroup,
         setIsModalGroup,
         isModalGroupEdite,

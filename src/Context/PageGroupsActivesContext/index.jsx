@@ -1,11 +1,15 @@
 import { createContext, useContext, useState } from "react";
 import { api } from "../../Services/api";
 import { GetIdGroupsGoalsContext } from "../IdGroupsGoals";
+import { useParams } from "react-router-dom";
+import { useEffect } from "react";
 
 export const PageGroupsActivesContext = createContext();
 
 export const PageGroupsActivesProvider = ({ children }) => {
   const [listGroupsActives, setListGroupsActives] = useState([]);
+
+  const [paramsTeste, setParamsTeste] = useState(0);
 
   const { getIdGroupsGoals } = useContext(GetIdGroupsGoalsContext);
 
@@ -23,14 +27,16 @@ export const PageGroupsActivesProvider = ({ children }) => {
     }
   };
 
-  const handleGetGroupsActives = () => {
+  console.log(paramsTeste);
+
+  useEffect(() => {
     api
-      .get(`/activities/?page=${nextPage}`)
+      .get(`/activities/?group=${paramsTeste}`)
 
       .then((response) => {
         setListGroupsActives(response.data.results);
       });
-  };
+  }, [nextPage, paramsTeste]);
 
   const teste = listGroupsActives
     .map((elem) => elem)
@@ -39,13 +45,14 @@ export const PageGroupsActivesProvider = ({ children }) => {
   return (
     <PageGroupsActivesContext.Provider
       value={{
-        handleGetGroupsActives,
         nextPage,
         setIsModalGroupsActives,
         isModalGroupsActives,
         teste,
         handleBeforePage,
         handleNextPage,
+        paramsTeste,
+        setParamsTeste,
       }}
     >
       {children}

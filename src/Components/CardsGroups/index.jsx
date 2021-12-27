@@ -1,5 +1,7 @@
 import { useHistory } from "react-router-dom";
 import { CardGroups } from "./style";
+import jwtDecode from "jwt-decode";
+import { useState } from "react";
 
 export const ListCardsGroups = ({
   name,
@@ -18,10 +20,13 @@ export const ListCardsGroups = ({
   handleUnSubscribeGroups,
   handleSubscribeGroups,
   changeGetIdGroupsGoals,
-  decode,
   isSrcTrue,
 }) => {
   const history = useHistory();
+
+  const [token] = useState(localStorage.getItem("@Habits-Pessoal:Token"));
+
+  const decoder = jwtDecode(token);
 
   return (
     <CardGroups>
@@ -47,7 +52,7 @@ export const ListCardsGroups = ({
               </button>
               <button onClick={() => handleDeleGroups(id)}>Remover</button>
 
-              {users_on_group.find((elem) => elem.id === decode.user_id) ? (
+              {users_on_group.find((elem) => elem.id === decoder.user_id) ? (
                 <button
                   onClick={() => {
                     handleUnSubscribeGroups(id);
@@ -68,7 +73,7 @@ export const ListCardsGroups = ({
               <button
                 onClick={() => {
                   changeGetIdGroupsGoals(id);
-                  history.push("/dashboard/groups/goals");
+                  history.push(`/dashboard/groups/${id}/goals`);
                 }}
               >
                 Ver metas
@@ -77,7 +82,7 @@ export const ListCardsGroups = ({
               <button
                 onClick={() => {
                   changeGetIdGroupsGoals(id);
-                  history.push("/dashboard/groups/actives");
+                  history.push(`/dashboard/groups/${id}/actives`);
                 }}
               >
                 Ver atividade
@@ -104,7 +109,7 @@ export const ListCardsGroups = ({
               </button>
               <button onClick={() => handleDeleGroups(id)}>Remover</button>
 
-              {users_on_group.find((elem) => elem.id === decode.user_id) ? (
+              {users_on_group.find((elem) => elem.id === decoder.user_id) ? (
                 <button
                   onClick={() => {
                     handleUnSubscribeGroups(id);
@@ -125,7 +130,7 @@ export const ListCardsGroups = ({
               <button
                 onClick={() => {
                   changeGetIdGroupsGoals(id);
-                  history.push("/dashboard/groups/goals");
+                  history.push(`/dashboard/groups/${id}/goals`);
                 }}
               >
                 Ver metas
@@ -134,7 +139,7 @@ export const ListCardsGroups = ({
               <button
                 onClick={() => {
                   changeGetIdGroupsGoals(id);
-                  history.push("/dashboard/groups/actives");
+                  history.push(`/dashboard/groups/${id}/actives`);
                 }}
               >
                 Ver atividade

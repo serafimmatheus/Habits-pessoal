@@ -23,9 +23,9 @@ export const PageGroupsGoalsProvider = ({ children }) => {
     }
   };
 
-  const handleGetGroupsGoals = () => {
+  const handleGetGroupsGoals = (group_id) => {
     api
-      .get(`/goals/?page=${nextPage}`)
+      .get(`/goals/?group=${group_id}`)
 
       .then((response) => setListGroupsGoals(response.data.results));
   };
