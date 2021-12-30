@@ -8,6 +8,7 @@ import { ModalGroupsEdite } from "../../Components/ModalGroupsEdite";
 import { useContext } from "react";
 import { ListCardsGroups } from "../../Components/CardsGroups";
 import { PageGroupsContext } from "../../Context/PageGroupsContext";
+import { Link } from "react-router-dom";
 
 export const PageGroups = () => {
   const {
@@ -67,6 +68,11 @@ export const PageGroups = () => {
           <p>Criar Grupo</p>
           <p onClick={() => setIsModalGroup(!isModalGroup)}>
             <FiPlusSquare />
+          </p>
+          <p className="my-groups">
+            <Link className="link" to="/dashboard/groups/mygroups/">
+              Meus Grupos
+            </Link>
           </p>
         </div>
         <section>

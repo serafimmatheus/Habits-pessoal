@@ -15,6 +15,16 @@ export const MainGroups = styled.main`
         margin: 20px;
         font-size: 20px;
       }
+
+      .my-groups {
+        .link {
+          text-decoration: none;
+          color: black;
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
     }
 
     ul {

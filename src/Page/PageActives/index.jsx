@@ -1,6 +1,5 @@
-import { Button } from "@mui/material";
-import { useContext, useEffect } from "react";
-import { FiChevronLeft, FiChevronRight, FiPlusCircle } from "react-icons/fi";
+import { useContext } from "react";
+import { FiPlusCircle } from "react-icons/fi";
 import { HeaderDashboar } from "../../Components/HeaderDashBoard/index";
 import { ModalGroupsActivesCreate } from "../../Components/ModalGroupsActivesCreate";
 import { PageGroupsActivesContext } from "../../Context/PageGroupsActivesContext";
@@ -9,15 +8,10 @@ import { useParams } from "react-router-dom";
 
 export const PageGroupsActives = () => {
   const {
-    handleGetGroupsActives,
-    nextPage,
     setIsModalGroupsActives,
     isModalGroupsActives,
     teste,
-    handleBeforePage,
-    handleNextPage,
     setParamsTeste,
-    paramsTeste,
   } = useContext(PageGroupsActivesContext);
 
   const params = useParams();

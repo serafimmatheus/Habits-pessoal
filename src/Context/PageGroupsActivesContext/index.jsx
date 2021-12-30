@@ -1,7 +1,6 @@
 import { createContext, useContext, useState } from "react";
 import { api } from "../../Services/api";
 import { GetIdGroupsGoalsContext } from "../IdGroupsGoals";
-import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 
 export const PageGroupsActivesContext = createContext();

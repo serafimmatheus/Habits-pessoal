@@ -1,18 +1,18 @@
 import { HeaderDashboar } from "../../Components/HeaderDashBoard";
 import { useEffect } from "react";
 import { MainHabits } from "./style";
-import { FiPlusCircle, FiXCircle, FiEdit } from "react-icons/fi";
+import { FiPlusCircle } from "react-icons/fi";
 import { ModalHabits } from "../../Components/ModalHabits";
 import { ModalHabitsEdite } from "../../Components/ModalHabitsEdite";
 import { PageHabitsContext } from "../../Context/PageHabitosContext";
 import { useContext } from "react";
+import { CardsHabitsConclution } from "../../Components/CardsHabitsConclution";
+import { CardsHabits } from "../../Components/CardsHabits";
 
 export const PageHabits = () => {
   const {
     handleHabits,
     listHabits,
-    handleDeleteHabits,
-    setGetIdEditeHabits,
     isModalHabits,
     setIsModalHabits,
     isModalHabitsEdite,
@@ -45,40 +45,35 @@ export const PageHabits = () => {
           </p>
         </div>
         <ul>
-          {listHabits.map((elem) => (
-            <li key={elem.id}>
-              <h2>{elem.title}</h2>
-              <p>{elem.difficulty}</p>
-              <p>{elem.frequency}</p>
-              <p>{elem.category}</p>
-              <div>
-                <button onClick={() => handleDeleteHabits(elem.id)}>
-                  <FiXCircle />
-                </button>
-                <button
-                  onClick={() => {
-                    setIsModalHabitsEdite(!isModalHabitsEdite);
-                    setGetIdEditeHabits(elem.id);
-                  }}
-                >
-                  <FiEdit />
-                </button>
-              </div>
-            </li>
-          ))}
+          {listHabits.map((elem) => {
+            if (elem.achieved === true) {
+              return (
+                <CardsHabitsConclution
+                  id={elem.id}
+                  title={elem.title}
+                  difficulty={elem.difficulty}
+                  frequency={elem.frequency}
+                  category={elem.category}
+                  how_much_achieved={elem.how_much_achieved}
+                  progress={elem.how_much_achieved}
+                />
+              );
+            } else {
+              return (
+                <CardsHabits
+                  id={elem.id}
+                  title={elem.title}
+                  difficulty={elem.difficulty}
+                  frequency={elem.frequency}
+                  category={elem.category}
+                  how_much_achieved={elem.how_much_achieved}
+                  progress={elem.how_much_achieved}
+                />
+              );
+            }
+          })}
         </ul>
       </MainHabits>
     </>
   );
 };
-
-/*
-title: "Academia a Tarde (15 minutos)"
-frequency: "Diária"
-difficulty: "díficil"
-id: 326
-category: "Sáude"
-
-achieved: false
-user: 94
-*/

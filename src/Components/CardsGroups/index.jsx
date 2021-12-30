@@ -24,7 +24,9 @@ export const ListCardsGroups = ({
 }) => {
   const history = useHistory();
 
-  const [token] = useState(localStorage.getItem("@Habits-Pessoal:Token"));
+  const [token] = useState(
+    JSON.parse(localStorage.getItem("@Habits-Pessoal:Token")) || ""
+  );
 
   const decoder = jwtDecode(token);
 

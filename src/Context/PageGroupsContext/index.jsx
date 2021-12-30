@@ -7,7 +7,7 @@ export const PageGroupsContext = createContext();
 
 export const PageGroupsProvider = ({ children }) => {
   const [token] = useState(
-    JSON.parse(localStorage.getItem("@Habits-Pessoal:Token"))
+    JSON.parse(localStorage.getItem("@Habits-Pessoal:Token")) || ""
   );
 
   const { changeGetIdGroupsGoals } = useContext(GetIdGroupsGoalsContext);

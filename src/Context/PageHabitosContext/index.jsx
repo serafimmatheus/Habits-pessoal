@@ -1,6 +1,7 @@
 import { createContext, useState } from "react";
 import { api } from "../../Services/api";
 import { toast } from "react-toastify";
+import jwtDecode from "jwt-decode";
 
 export const PageHabitsContext = createContext();
 
@@ -16,6 +17,8 @@ export const PageHabitsProvider = ({ children }) => {
   const [isModalHabitsEdite, setIsModalHabitsEdite] = useState(false);
 
   const [listHabits, setListHabits] = useState([]);
+
+  const decoder = jwtDecode(token);
 
   const handleHabits = () => {
     api
@@ -44,12 +47,26 @@ export const PageHabitsProvider = ({ children }) => {
       });
   };
 
-  const handleSubmitHabits = ({ ...rest }) => {
+  const handleSubmitHabits = ({
+    title,
+    category,
+    difficulty,
+    frequency,
+    achieved,
+    how_much_achieved,
+  }) => {
+    if (how_much_achieved == 100) {
+      achieved = true;
+    }
+
     const data = {
-      ...rest,
-      user: "user",
-      achieved: false,
-      how_much_achieved: 0,
+      title,
+      category,
+      difficulty,
+      frequency,
+      how_much_achieved,
+      user: decoder.user_id,
+      achieved,
     };
 
     api
@@ -72,14 +89,22 @@ export const PageHabitsProvider = ({ children }) => {
     difficulty,
     frequency,
     title,
+    how_much_achieved,
+    achieved,
   }) => {
+    if (how_much_achieved == 100) {
+      achieved = true;
+    } else {
+      achieved = false;
+    }
+
     const newData = {
       category,
       difficulty,
       frequency,
       title,
-      how_much_achieved: 100,
-      achieved: true,
+      how_much_achieved,
+      achieved,
     };
 
     api

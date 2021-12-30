@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const CardGroups = styled.li`
+export const CardGroupsInscritos = styled.li`
   @media screen and (min-width: 320px) {
     li {
       display: flex;
@@ -9,7 +9,7 @@ export const CardGroups = styled.li`
       align-items: center;
       width: 200px;
       min-height: 250px;
-      background-image: linear-gradient(180deg, #e65100, #f57c00, #e65100);
+      background-image: linear-gradient(180deg, #1b5e20, #388e3c, #1b5e20);
       margin: 10px;
       padding: 10px;
       color: #212121;

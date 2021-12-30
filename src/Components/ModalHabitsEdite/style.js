@@ -8,7 +8,7 @@ export const ModalHabitsEditeDiv = styled.div`
     background: rgba(0, 0, 0, 0.9);
     width: 100%;
     height: 100vh;
-
+    z-index: 2;
     display: ${({ isModalHabitsEdite }) =>
       isModalHabitsEdite ? "flex" : "none"};
     justify-content: center;

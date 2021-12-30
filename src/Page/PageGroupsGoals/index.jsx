@@ -1,6 +1,5 @@
-import { Button } from "@mui/material";
 import { useContext, useEffect } from "react";
-import { FiChevronLeft, FiChevronRight, FiPlusCircle } from "react-icons/fi";
+import { FiPlusCircle } from "react-icons/fi";
 import { HeaderDashboar } from "../../Components/HeaderDashBoard/index";
 import { ModalGroupsGoalsCreate } from "../../Components/ModalGroupsGoalsCreate";
 import { PageGroupsGoalsContext } from "../../Context/PageGroupsGoalsContext";
@@ -14,8 +13,6 @@ export const PageGroupsGoals = () => {
     setIsModalGroupsGoals,
     isModalGroupsGoals,
     teste,
-    handleBeforePage,
-    handleNextPage,
   } = useContext(PageGroupsGoalsContext);
 
   const paramsGroupsGoals = useParams();

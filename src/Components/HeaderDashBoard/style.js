@@ -8,8 +8,22 @@ export const HeaderDash = styled.header`
     background-image: linear-gradient(45deg, #2e2e2e, #1f1e1e, #2e2e2e);
     color: white;
 
-    h1 {
-      font-size: 30px;
+    figure {
+      width: 250px;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      img {
+        border-radius: 100%;
+        width: 50px;
+        height: 50px;
+        object-fit: cover;
+        margin: 0 10px;
+        cursor: pointer;
+      }
+      h1 {
+        font-size: 30px;
+      }
     }
 
     nav {

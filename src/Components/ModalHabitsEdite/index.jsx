@@ -12,6 +12,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { FiXSquare } from "react-icons/fi";
 import { useContext } from "react";
 import { PageHabitsContext } from "../../Context/PageHabitosContext";
+import Slider from "@mui/material/Slider";
 
 export const ModalHabitsEdite = ({
   setIsModalHabitsEdite,
@@ -138,6 +139,14 @@ export const ModalHabitsEdite = ({
             />
           </RadioGroup>
         </FormControl>
+
+        <Slider
+          size="small"
+          defaultValue={0}
+          aria-label="Small"
+          valueLabelDisplay="auto"
+          {...register("how_much_achieved")}
+        />
 
         <Button type="submit" variant="contained">
           Editar hábito
