@@ -5,6 +5,7 @@ import { PageHabitsProvider } from "./PageHabitosContext";
 import { PageGroupsProvider } from "./PageGroupsContext";
 import { PageGroupsActivesProvider } from "./PageGroupsActivesContext";
 import { PageGroupsGoalsProvider } from "./PageGroupsGoalsContext";
+import { JwtProvider } from "./jwtDecoder";
 
 export const Providers = ({ children }) => {
   return (
@@ -14,7 +15,9 @@ export const Providers = ({ children }) => {
           <PageHabitsProvider>
             <PageGroupsProvider>
               <PageGroupsActivesProvider>
-                <PageGroupsGoalsProvider>{children}</PageGroupsGoalsProvider>
+                <PageGroupsGoalsProvider>
+                  <JwtProvider>{children}</JwtProvider>
+                </PageGroupsGoalsProvider>
               </PageGroupsActivesProvider>
             </PageGroupsProvider>
           </PageHabitsProvider>

@@ -126,7 +126,7 @@ export const Register = () => {
           </Button>
           <div className="options-register">
             Já tem cadastro?
-            <Link className="link" to="/login">
+            <Link className="link" to="/">
               <span>Login.</span>
             </Link>
           </div>

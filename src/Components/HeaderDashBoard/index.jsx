@@ -1,4 +1,3 @@
-import jwtDecode from "jwt-decode";
 import { useState } from "react";
 import { HeaderDash } from "./style";
 import { FiSearch } from "react-icons/fi";
@@ -14,6 +13,7 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Modal from "@mui/material/Modal";
 import { CssTextField } from "../../Page/login/style";
+import jwtDecode from "jwt-decode";
 
 export const HeaderDashboar = ({
   src,
@@ -29,12 +29,12 @@ export const HeaderDashboar = ({
     JSON.parse(localStorage.getItem("@Habits-Pessoal:Token")) || ""
   );
 
-  const decoder = jwtDecode(token);
+  const decodi = jwtDecode(token);
 
   const getUserName = () => {
     api
-      .get(`/users/${decoder.user_id}/`)
-      .then((response) => setName(response.data));
+      .get(`/users/${decodi.user_id}/`)
+      .then((response) => setName(response.data.username));
   };
 
   const handleExit = () => {
@@ -47,7 +47,7 @@ export const HeaderDashboar = ({
 
   const EditeProfileUser = (data) => {
     api
-      .patch(`/users/${decoder.user_id}/`, data, {
+      .patch(`/users/1/`, data, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -168,7 +168,7 @@ export const HeaderDashboar = ({
             alt="Usuário"
           />
 
-          <h1>{name.username}</h1>
+          <h1>{name}</h1>
         </figure>
 
         <nav>

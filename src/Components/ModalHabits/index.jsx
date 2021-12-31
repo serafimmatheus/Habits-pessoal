@@ -6,15 +6,22 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
 import Button from "@mui/material/Button";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { FiXSquare } from "react-icons/fi";
 import { PageHabitsContext } from "../../Context/PageHabitosContext";
 import Slider from "@mui/material/Slider";
+import jwtDecode from "jwt-decode";
 
 export const ModalHabits = ({ setIsModalHabits, isModalHabits }) => {
+  const [token] = useState(
+    JSON.parse(localStorage.getItem("@Habits-Pessoal:Token")) || ""
+  );
+
+  const decodi = jwtDecode(token);
+
   const { handleSubmitHabits } = useContext(PageHabitsContext);
 
   const schema = yup.object().shape({});
@@ -24,7 +31,7 @@ export const ModalHabits = ({ setIsModalHabits, isModalHabits }) => {
   });
 
   const PageSubmitHabits = (data) => {
-    handleSubmitHabits(data);
+    handleSubmitHabits(data, decodi.user_id);
   };
 
   return (

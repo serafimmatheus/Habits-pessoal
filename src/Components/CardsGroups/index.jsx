@@ -1,7 +1,7 @@
 import { useHistory } from "react-router-dom";
 import { CardGroups } from "./style";
-import jwtDecode from "jwt-decode";
 import { useState } from "react";
+import jwt_decode from "jwt-decode";
 
 export const ListCardsGroups = ({
   name,
@@ -28,7 +28,7 @@ export const ListCardsGroups = ({
     JSON.parse(localStorage.getItem("@Habits-Pessoal:Token")) || ""
   );
 
-  const decoder = jwtDecode(token);
+  const decodi = jwt_decode(token);
 
   return (
     <CardGroups>
@@ -54,7 +54,7 @@ export const ListCardsGroups = ({
               </button>
               <button onClick={() => handleDeleGroups(id)}>Remover</button>
 
-              {users_on_group.find((elem) => elem.id === decoder.user_id) ? (
+              {users_on_group.find((elem) => elem.id === decodi.user_id) ? (
                 <button
                   onClick={() => {
                     handleUnSubscribeGroups(id);
@@ -111,7 +111,7 @@ export const ListCardsGroups = ({
               </button>
               <button onClick={() => handleDeleGroups(id)}>Remover</button>
 
-              {users_on_group.find((elem) => elem.id === decoder.user_id) ? (
+              {users_on_group.find((elem) => elem.id === decodi.user_id) ? (
                 <button
                   onClick={() => {
                     handleUnSubscribeGroups(id);

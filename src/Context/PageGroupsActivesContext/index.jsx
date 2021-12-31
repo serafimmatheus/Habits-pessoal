@@ -26,8 +26,6 @@ export const PageGroupsActivesProvider = ({ children }) => {
     }
   };
 
-  console.log(paramsTeste);
-
   useEffect(() => {
     api
       .get(`/activities/?group=${paramsTeste}`)
